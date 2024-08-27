@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+/* Colors adapted from https://tailwindcss.com/docs/customizing-colors */
+
 const GlobalStyles = createGlobalStyle`
 :root {
   /* Indigo */
