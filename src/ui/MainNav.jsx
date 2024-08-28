@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
+// eslint-disable-next-line no-unused-vars
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 `;
-
+// eslint-disable-next-line no-unused-vars
 const Link = styled.a`
   &:link,
   &:visited {
@@ -44,3 +45,9 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  return <nav>Nav</nav>;
+}
+
+export default MainNav;
