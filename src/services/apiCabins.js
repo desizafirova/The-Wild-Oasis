@@ -11,6 +11,19 @@ export async function getCabins() {
   return data;
 }
 
+export async function createCabin(newCabin) {
+  // eslint-disable-next-line no-unused-vars
+  const { data, error } = await supabase
+    .from('cabins')
+    .insert([newCabin])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error('Cabin could not be created');
+  }
+}
+
 export async function deleteCabin(id) {
   const { data, error } = await supabase.from('cabins').delete().eq('id', id);
 
