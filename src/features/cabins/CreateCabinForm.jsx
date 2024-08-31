@@ -11,7 +11,7 @@ import FormRow from '../../ui/FormRow';
 import { useCreateCabin } from './useCreateCabin';
 import { useEditCabin } from './useEditCabin';
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { isCreating, createCabin } = useCreateCabin();
   const { isEditing, editCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
@@ -32,7 +32,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       editCabin(
         { newCabinData: { ...data, image }, id: editId },
         {
-          onSuccess: (data) => reset(data),
+          onSuccess: (data) => {
+            reset(data);
+            onCloseModal?.();
+          },
         }
       );
     } else {
@@ -41,7 +44,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         createCabin(
           { ...data, image: imageFile },
           {
-            onSuccess: (data) => reset(data),
+            onSuccess: (data) => {
+              reset(data);
+              onCloseModal?.();
+            },
           }
         );
       } else {
@@ -139,7 +145,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
@@ -159,6 +169,7 @@ CreateCabinForm.propTypes = {
     discount: PropTypes.number,
     description: PropTypes.string,
   }),
+  onCloseModal: PropTypes.func.isRequired,
 };
 
 export default CreateCabinForm;
