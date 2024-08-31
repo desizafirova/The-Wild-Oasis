@@ -6,9 +6,7 @@ export function useOutsideClick(handler, listenCaputuring = true) {
   useEffect(
     function () {
       function handleClick(e) {
-        if (ref.current && !ref.current.contains(e.target)) close();
-
-        handler();
+        if (ref.current && !ref.current.contains(e.target)) handler();
       }
 
       document.addEventListener('click', handleClick, listenCaputuring);
