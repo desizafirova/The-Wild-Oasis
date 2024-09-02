@@ -201,7 +201,7 @@ BookingDataBox.propTypes = {
     guests: PropTypes.shape({
       fullName: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
+      country: PropTypes.string,
       countryFlag: PropTypes.string,
       nationalID: PropTypes.string.isRequired,
     }),
