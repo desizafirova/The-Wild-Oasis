@@ -10,8 +10,9 @@ export function useLogin() {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       //  manually set some data in the React Query cache
-      queryClient.setQueryData(['user', user]);
-      navigate('/dashboard');
+      queryClient.setQueryData(['user', user.user]);
+      //   with replace we erase the history in the application and we cannot go back
+      navigate('/dashboard', { replace: true });
     },
     onError: (err) => {
       console.log('ERROR', err);

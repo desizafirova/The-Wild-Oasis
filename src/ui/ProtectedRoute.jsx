@@ -15,7 +15,7 @@ const FullPage = styled.div`
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  //  1. Load the authenticated user(creating a new function into the apiAuth and useUser hook)
+  //  1. Load the authenticated user(creating a new function into the apiAuth and creating an useUser hook)
   const { isLoading, isAuthenticated } = useUser();
 
   // 2. If there is not authenticated user, redirect to the '/login' page
