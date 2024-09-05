@@ -47,7 +47,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
 
 Stats.propTypes = {
   bookings: PropTypes.arrayOf(PropTypes.object).isRequired,
-  confirmedStays: PropTypes.number.isRequired,
+  confirmedStays: PropTypes.array.isRequired,
   numDays: PropTypes.number.isRequired,
   cabinCount: PropTypes.number.isRequired,
 };
