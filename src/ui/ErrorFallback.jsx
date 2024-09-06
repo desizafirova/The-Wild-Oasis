@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+import Heading from './Heading';
+import GlobalStyles from '../styles/GlobalStyles';
+import Button from './Button';
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
@@ -24,8 +29,34 @@ const Box = styled.div`
   }
 
   & p {
-    font-family: "Sono";
+    font-family: 'Sono';
     margin-bottom: 3.2rem;
     color: var(--color-grey-500);
   }
 `;
+
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <>
+      {/* Adding GlobalStyles because otherwise entering this component  we are outside of GlobalStyles*/}
+      <GlobalStyles />
+      <StyledErrorFallback>
+        <Box>
+          <Heading as="h1">Something went wrong 💣</Heading>
+          <p>{error.message}</p>
+          <Button size="large" onClick={resetErrorBoundary}>
+            {' '}
+            Try again
+          </Button>
+        </Box>
+      </StyledErrorFallback>
+    </>
+  );
+}
+
+ErrorFallback.propTypes = {
+  error: PropTypes.object.isRequired,
+  resetErrorBoundary: PropTypes.func.isRequired,
+};
+
+export default ErrorFallback;
